@@ -1,0 +1,50 @@
+# Diretórios e arquivos específicos do ambiente virtual
+venv/
+env/
+.venv/
+.env/
+
+# Arquivos de banco de dados
+db.sqlite3
+
+# Arquivos de configuração do sistema
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+
+# Arquivos de configuração de IDEs
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Arquivos de logs
+*.log
+
+# Arquivos temporários
+*.tmp
+*.swp
+*.swo
+
+# Arquivos gerados pelo Django
+*.sqlite3
+*.db
+
+# Arquivos de migrações
+**/migrations/*
+!**/migrations/__init__.py
+
+# Arquivos de dados estáticos
+staticfiles/
+
+# Arquivos de mídia
+media/
+
+# Arquivos de configuração sensível
+*.env
+config/
+
+# Arquivos do sistema operacional
+.DS_Store
+Thumbs.db

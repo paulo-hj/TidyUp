@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TidyUp - HGB Soft</title>
+    {% load static %}
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: #00222E;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+        }
+        .container {
+            background-color: #00222E;
+            border-radius: 8px;
+            padding: 20px;
+            flex: 1;
+        }
+        .alert {
+            margin-top: 20px;
+        }
+        .logo {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            width: 100px; /* Ajuste o tamanho conforme necessário */
+        }
+        footer {
+            background-color: #001622;
+            color: #ffffff;
+            text-align: center;
+            padding: 10px 0;
+            font-size: 0.9em; /* Diminuir o tamanho da fonte */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 600px; /* Espaçamento maior entre o texto e o link */
+            flex-wrap: wrap; /* Para garantir que o conteúdo se ajuste em telas menores */
+        }
+        footer .copyright {
+            margin: 0; /* Remove a margem */
+        }
+        footer a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Gerar Script de Organização de Arquivos</h1>
+        <form method="post" action="{% url 'generate_script' %}" class="mt-4">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="num_digitos">Quantidade de dígitos:</label>
+                <input type="text" id="num_digitos" name="num_digitos" class="form-control" 
+                    pattern="\d{1,4}" maxlength="4" title="Insira entre 1 e 4 dígitos numéricos" required>
+                <small class="form-text text-muted">Digite entre 1 e 4 dígitos numéricos.</small>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Gerar Script</button>
+            </div>
+        </form>
+        {% if message %}
+            <div class="alert alert-info mt-4">{{ message }}</div>
+        {% endif %}
+    </div>
+    <img src="{% static 'images/logo.png' %}" alt="Logo" class="logo">
+    <footer>
+        <div class="copyright">
+            HGB Soft Copyright ® 2024 - Todos os Direitos Reservados.
+        </div>
+        <a href="https://hgbsoft.com.br/politica-de-privacidade/" target="_blank">Políticas de Privacidade</a>
+    </footer>
+    <script src="{% static 'js/jquery-3.5.1.slim.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+</body>
+</html>
