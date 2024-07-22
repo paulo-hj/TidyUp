@@ -21,3 +21,12 @@ def generate_script(request):
         return response
     else:
         return HttpResponse("Método não permitido", status=405)
+
+def sobre(request):
+    return render(request, 'sobre.html')
+
+def contato(request):
+    return render(request, 'contato.html')
+
+def tutorial(request):
+    return render(request, 'tutorial.html')

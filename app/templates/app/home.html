@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     {% load static %}
     <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
@@ -15,16 +15,49 @@
             padding: 0;
         }
         body {
-            background-color: #00222E;
+            background-color: #0D1117;
             color: #ffffff;
             display: flex;
             flex-direction: column;
         }
+        header {
+            background-color: #010409; /* Cor de fundo da barra superior */
+            color: #ffffff;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start; /* Alinha os itens à esquerda */
+        }
+        header .logo-text {
+            font-size: 1.5em;
+            font-weight: bold;
+            font-family: 'Arial', sans-serif; /* Escolha uma fonte mais elegante */
+            color: #ffffff;
+            text-shadow: 1px 1px 2px #000; /* Adiciona uma sombra ao texto */
+        }
+        .navbar {
+            display: flex;
+            gap: 15px; /* Espaçamento entre os botões */
+            margin-left: 20px; /* Adiciona um espaço à esquerda dos botões */
+        }
+        .nav-link {
+            color: #ffffff; /* Cor do texto dos botões */
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .nav-link:hover {
+            background-color: #171B20; /* Cor de fundo ao passar o mouse */
+            color: #ffffff; /* Mantém a cor do texto branca ao passar o mouse */
+        }
         .container {
-            background-color: #00222E;
+            background-color: #0D1117;
             border-radius: 8px;
             padding: 20px;
             flex: 1;
+            max-width: 600px; /* Limita a largura máxima do container */
+            margin: auto; /* Centraliza o container horizontalmente */
         }
         .alert {
             margin-top: 20px;
@@ -36,8 +69,8 @@
             width: 100px; /* Ajuste o tamanho conforme necessário */
         }
         footer {
-            background-color: #001622;
-            color: #ffffff;
+            background-color: #010409; /* Cor de fundo do rodapé */
+            color: #ffffff; /* Cor do texto no rodapé */
             text-align: center;
             padding: 10px 0;
             font-size: 0.9em; /* Diminuir o tamanho da fonte */
@@ -45,21 +78,69 @@
             justify-content: center;
             align-items: center;
             gap: 600px; /* Espaçamento maior entre o texto e o link */
-            flex-wrap: wrap; /* Para garantir que o conteúdo se ajuste em telas menores */
+            flex-wrap: wrap; /* Para garantir que o conteúdo se ajuste em telas menores */    
         }
         footer .copyright {
             margin: 0; /* Remove a margem */
         }
         footer a {
-            color: #ffffff;
+            color: #ffffff; /* Cor do texto do link */
             text-decoration: none;
         }
         footer a:hover {
             text-decoration: underline;
         }
+        .form-group input {
+            background-color: #f0f0f0; /* Cor de fundo do campo de entrada */
+            border-radius: 4px; /* Borda arredondada */
+            border: 1px solid #e1e1e1; /* Cor da borda */
+            padding: 8px; /* Espaçamento interno do campo */
+            width: 150px; /* Define a largura do campo de entrada */
+        }
+        .form-group input:focus {
+            border-color: #0072ff; /* Cor da borda ao focar */
+            outline: none; /* Remove o contorno padrão */
+            box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25); /* Adiciona sombra ao focar */
+        }
+        /* Estilo do popup */
+        .popup-overlay {
+            display: none; /* Esconde o popup por padrão */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        .popup-content {
+            background-color: #ffffff;
+            color: #000000;
+            padding: 20px;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 500px;
+            position: relative;
+        }
+        .popup-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
+    <header>
+        <div class="logo-text">TidyUp</div>
+        <nav class="navbar">
+            <a href="#" class="nav-link" id="sobre-btn">Sobre</a>
+            <a href="#" class="nav-link">Tutorial</a>
+            <a href="#" class="nav-link">Mais Ferramentas</a>
+        </nav>
+    </header>
     <div class="container mt-5">
         <h1 class="text-center">Gerar Script de Organização de Arquivos</h1>
         <form method="post" action="{% url 'generate_script' %}" class="mt-4">
@@ -85,8 +166,32 @@
         </div>
         <a href="https://hgbsoft.com.br/politica-de-privacidade/" target="_blank">Políticas de Privacidade</a>
     </footer>
+    <!-- Popup -->
+    <div id="sobre-popup" class="popup-overlay">
+        <div class="popup-content">
+            <span class="popup-close" id="popup-close">&times;</span>
+            <h2>Seu Nome</h2>
+            <p>Informações adicionais sobre você.</p>
+        </div>
+    </div>
     <script src="{% static 'js/jquery-3.5.1.slim.min.js' %}"></script>
     <script src="{% static 'js/popper.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script>
+        document.getElementById('sobre-btn').addEventListener('click', function(event) {
+            event.preventDefault(); // Impede o comportamento padrão do link
+            document.getElementById('sobre-popup').style.display = 'flex';
+        });
+
+        document.getElementById('popup-close').addEventListener('click', function() {
+            document.getElementById('sobre-popup').style.display = 'none';
+        });
+
+        window.addEventListener('click', function(event) {
+            if (event.target === document.getElementById('sobre-popup')) {
+                document.getElementById('sobre-popup').style.display = 'none';
+            }
+        });
+    </script>
 </body>
 </html>
