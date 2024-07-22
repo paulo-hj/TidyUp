@@ -16,13 +16,13 @@
         }
         body {
             background-color: #0D1117;
-            color: #ffffff;
+            color: #F2F2F2;
             display: flex;
             flex-direction: column;
         }
         header {
             background-color: #010409; /* Cor de fundo da barra superior */
-            color: #ffffff;
+            color: #F2F2F2;
             padding: 10px 20px;
             display: flex;
             align-items: center;
@@ -33,7 +33,7 @@
             font-weight: bold;
             font-family: 'Arial', sans-serif; /* Escolha uma fonte mais elegante */
             margin-left: 700px; /* Move o texto um pouco para a direita */
-            color: #ffffff;
+            color: #F2F2F2;
             text-shadow: 1px 1px 2px #000; /* Adiciona uma sombra ao texto */
         }
         .navbar {
@@ -42,7 +42,7 @@
             margin-left: 680px; /* Adiciona um espaço à esquerda dos botões */
         }
         .nav-link {
-            color: #ffffff; /* Cor do texto dos botões */
+            color: #F2F2F2; /* Cor do texto dos botões */
             text-decoration: none;
             padding: 8px 15px;
             border-radius: 4px;
@@ -50,7 +50,7 @@
         }
         .nav-link:hover {
             background-color: #171B20; /* Cor de fundo ao passar o mouse */
-            color: #ffffff; /* Mantém a cor do texto branca ao passar o mouse */
+            color: #F2F2F2; /* Mantém a cor do texto branca ao passar o mouse */
         }
         .container {
             background-color: #0D1117;
@@ -71,7 +71,7 @@
         }
         footer {
             background-color: #010409; /* Cor de fundo do rodapé */
-            color: #ffffff; /* Cor do texto no rodapé */
+            color: #F2F2F2; /* Cor do texto no rodapé */
             text-align: center;
             padding: 10px 0;
             font-size: 0.9em; /* Diminuir o tamanho da fonte */
@@ -85,16 +85,16 @@
             margin: 0; /* Remove a margem */
         }
         footer a {
-            color: #ffffff; /* Cor do texto do link */
+            color: #F2F2F2; /* Cor do texto do link */
             text-decoration: none;
         }
         footer a:hover {
             text-decoration: underline;
         }
         .form-group input {
-            background-color: #f0f0f0; /* Cor de fundo do campo de entrada */
+            background-color: #F2F2F2; /* Cor de fundo do campo de entrada */
             border-radius: 4px; /* Borda arredondada */
-            border: 1px solid #e1e1e1; /* Cor da borda */
+            border: 1px solid #F2F2F2; /* Cor da borda */
             padding: 8px; /* Espaçamento interno do campo */
             width: 150px; /* Define a largura do campo de entrada */
         }
@@ -118,7 +118,7 @@
 
         .popup-content {
             background-color: #0D1117; /* Cor de fundo do popup */
-            color: #ffffff; /* Cor do texto no popup */
+            color: #F2F2F2; /* Cor do texto no popup */
             padding: 50px; /* Ajusta o padding para uma área de conteúdo razoável */
             border-radius: 12px; /* Borda mais arredondada */
             width: 70%; /* Ajusta a largura do popup */
@@ -144,7 +144,7 @@
         .popup-header p {
             font-size: 1.2em; /* Tamanho do texto do cabeçalho ajustado */
             margin: 10px 0; /* Margem superior e inferior */
-            color: #ffffff; /* Cor do texto */
+            color: #F2F2F2; /* Cor do texto */
         }
 
         .popup-header a {
@@ -188,7 +188,7 @@
             right: 15px;
             font-size: 2em; /* Tamanho do botão de fechar ajustado */
             cursor: pointer;
-            color: #ffffff; /* Cor do botão de fechar */
+            color: #F2F2F2; /* Cor do botão de fechar */
         }
     </style>
 </head>
@@ -219,7 +219,6 @@
             <div class="alert alert-info mt-4">{{ message }}</div>
         {% endif %}
     </div>
-    <img src="{% static 'images/logo.png' %}" alt="Logo" class="logo">
     <footer>
         <div class="copyright">
             HGB Soft Copyright ® 2024 - Todos os Direitos Reservados.
@@ -240,8 +239,10 @@
             <br>
             <br>
             <br>
-            <img src="{% static 'images/logo.png' %}" alt="Logo" class="logo">
-    </div>
+            <a href="https://hgbsoft.com.br">
+                <img src="{% static 'images/logo.png' %}" alt="Logo" class="logo">
+            </a>
+        </div>
     <script src="{% static 'js/jquery-3.5.1.slim.min.js' %}"></script>
     <script src="{% static 'js/popper.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
