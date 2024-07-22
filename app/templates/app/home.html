@@ -32,13 +32,14 @@
             font-size: 1.5em;
             font-weight: bold;
             font-family: 'Arial', sans-serif; /* Escolha uma fonte mais elegante */
+            margin-left: 700px; /* Move o texto um pouco para a direita */
             color: #ffffff;
             text-shadow: 1px 1px 2px #000; /* Adiciona uma sombra ao texto */
         }
         .navbar {
             display: flex;
             gap: 15px; /* Espaçamento entre os botões */
-            margin-left: 20px; /* Adiciona um espaço à esquerda dos botões */
+            margin-left: 680px; /* Adiciona um espaço à esquerda dos botões */
         }
         .nav-link {
             color: #ffffff; /* Cor do texto dos botões */
@@ -110,25 +111,84 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,0.5);
+            background-color: rgba(0,0,0,0.6); /* Escurece um pouco mais o fundo da sobreposição */
             justify-content: center;
             align-items: center;
         }
+
         .popup-content {
-            background-color: #ffffff;
-            color: #000000;
-            padding: 20px;
-            border-radius: 8px;
-            width: 80%;
-            max-width: 500px;
+            background-color: #0D1117; /* Cor de fundo do popup */
+            color: #ffffff; /* Cor do texto no popup */
+            padding: 50px; /* Ajusta o padding para uma área de conteúdo razoável */
+            border-radius: 12px; /* Borda mais arredondada */
+            width: 70%; /* Ajusta a largura do popup */
+            max-width: 700px; /* Ajusta a largura máxima conforme necessário */
+            max-height: 70%; /* Ajusta a altura máxima para evitar overflow */
+            overflow-y: auto; /* Adiciona rolagem se o conteúdo exceder a altura */
             position: relative;
+            box-sizing: border-box; /* Inclui padding e bordas no tamanho total do elemento */
+            text-align: left; /* Alinha o texto à esquerda */
         }
+
+        .popup-header {
+            margin-bottom: 40px; /* Aumenta o espaçamento inferior para o título principal */
+        }
+
+        .popup-header h2 {
+            margin-bottom: 10px; /* Ajusta o espaçamento abaixo do título principal */
+            margin: 0;
+            font-size: 2em; /* Tamanho do título ajustado */
+            font-weight: bold;
+        }
+
+        .popup-header p {
+            font-size: 1.2em; /* Tamanho do texto do cabeçalho ajustado */
+            margin: 10px 0; /* Margem superior e inferior */
+            color: #ffffff; /* Cor do texto */
+        }
+
+        .popup-header a {
+            color: #1E90FF; /* Cor do link */
+            text-decoration: none;
+        }
+
+        .popup-header a:hover {
+            text-decoration: underline; /* Sublinhado ao passar o mouse */
+        }
+
+        .popup-content p {
+            margin: 5px 0; /* Espaçamento uniforme entre parágrafos */
+            line-height: 1.5; /* Melhora a legibilidade do texto */
+            font-size: 1.1em; /* Tamanho da fonte do texto ajustado */
+        }
+
+        .popup-content p.bold {
+            font-weight: bold; /* Títulos em negrito */
+            margin-bottom: 5px; /* Espaço abaixo dos títulos */
+            margin-top: 30px;
+        }
+
+        .popup-content p.bold + p {
+            margin-top: 5px; /* Reduz o espaço entre o título e o parágrafo associado */
+        }
+
+        .popup-content p + p {
+            margin-top: 30px; /* Espaço aumentado entre blocos de informações */
+        }
+
+        .popup-content img {
+            width: 155px; /* Ajusta o tamanho da logo conforme necessário */
+            display: block;
+            margin-left: 280px; /* Move o texto um pouco para a direita */
+        }
+
         .popup-close {
             position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 1.5em;
+            top: 1px; /* Ajusta a posição do botão de fechar mais próximo do topo */
+            right: 15px;
+            font-size: 2em; /* Tamanho do botão de fechar ajustado */
             cursor: pointer;
+            color: #ffffff; /* Cor do botão de fechar */
         }
     </style>
 </head>
@@ -170,9 +230,17 @@
     <div id="sobre-popup" class="popup-overlay">
         <div class="popup-content">
             <span class="popup-close" id="popup-close">&times;</span>
-            <h2>Seu Nome</h2>
-            <p>Informações adicionais sobre você.</p>
-        </div>
+            <h2>TidyUp - Versão 1.0</h2>
+            <p class="bold">Desenvolvedores:</p>
+            <p>Paulo Henrique<br>Silas Vinicius</p>
+            <p class="bold">Contato:</p>
+            <p><a href="mailto:suporte@hgbsoft.com.br">suporte@hgbsoft.com.br</a></p>
+            <p class="bold">Whatsapp:</p>
+            <p><a href="https://api.whatsapp.com/send/?phone=8188363056&text&type=phone_number&app_absent=0" target="_blank">81 98836-3056</a></p>
+            <br>
+            <br>
+            <br>
+            <img src="{% static 'images/logo.png' %}" alt="Logo" class="logo">
     </div>
     <script src="{% static 'js/jquery-3.5.1.slim.min.js' %}"></script>
     <script src="{% static 'js/popper.min.js' %}"></script>

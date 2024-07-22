@@ -25,8 +25,8 @@ def generate_script(request):
 def sobre(request):
     return render(request, 'sobre.html')
 
-def contato(request):
-    return render(request, 'contato.html')
-
 def tutorial(request):
     return render(request, 'tutorial.html')
+
+def ferramentas(request):
+    return render(request, 'ferramentas.html')

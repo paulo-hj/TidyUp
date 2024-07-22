@@ -9,6 +9,6 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('generate_script/', views.generate_script, name='generate_script'),
     path('sobre/', views.sobre, name='about'),
-    path('contato/', views.contato, name='contact'),
     path('tutorial/', views.tutorial, name='tutorial'),
+    path('ferramentas/', views.ferramentas, name='ferramentas'),
 ]
