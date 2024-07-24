@@ -10,25 +10,34 @@ body {
     flex-direction: column;
 }
 header {
-    background-color: #010409; /* Cor de fundo da barra superior */
+    background-color: #010409;
     color: #F2F2F2;
     padding: 10px 20px;
     display: flex;
+    justify-content: space-between; /* Distribui espaço entre logo e navegação */
     align-items: center;
-    justify-content: flex-start; /* Alinha os itens à esquerda */
 }
+
 header .logo-text {
     font-size: 1.5em;
     font-weight: bold;
-    font-family: 'Arial', sans-serif; /* Escolha uma fonte mais elegante */
-    margin-left: 510px; /* Move o texto um pouco para a direita */
+    font-family: 'Arial', sans-serif;
     color: #F2F2F2;
-    text-shadow: 1px 1px 2px #000; /* Adiciona uma sombra ao texto */
+    text-shadow: 1px 1px 2px #000;
 }
 .navbar {
     display: flex;
-    gap: 15px; /* Espaçamento entre os botões */
-    margin-left: 400px; /* Adiciona um espaço à esquerda dos botões */
+    gap: 15px;
+}
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .navbar {
+        margin-top: 10px;
+        gap: 10px;
+    }
 }
 .nav-link {
     color: #F2F2F2; /* Cor do texto dos botões */
@@ -104,7 +113,14 @@ footer a:hover {
     justify-content: center;
     align-items: center;
 }
-
+.popup-content h2 {
+    font-family: 'Roboto', sans-serif; /* Aplica a nova fonte */
+    font-size: 1.8em; /* Ajusta o tamanho da fonte */
+    font-weight: bold; /* Deixa a fonte em negrito */
+    color: #F2F2F2; /* Cor do texto */
+    margin-bottom: 20px; /* Espaçamento abaixo do título */
+    text-align: center; /* Centraliza o texto */
+}
 .popup-content {
     background-color: #0D1117; /* Cor de fundo do popup */
     color: #F2F2F2; /* Cor do texto no popup */
@@ -178,4 +194,21 @@ footer a:hover {
     font-size: 2em; /* Tamanho do botão de fechar ajustado */
     cursor: pointer;
     color: #F2F2F2; /* Cor do botão de fechar */
+}
+
+.btn-custom {
+    font-family: 'Roboto', sans-serif; /* Aplica a mesma fonte que os botões da navbar */
+    background-color: #171B20; /* Cor de fundo igual aos botões da navbar */
+    color: #F2F2F2; /* Cor do texto igual aos botões da navbar */
+    border: none; /* Remove a borda padrão */
+    padding: 8px 15px; /* Espaçamento interno */
+    border-radius: 4px; /* Borda arredondada */
+    font-size: 1em; /* Tamanho da fonte */
+    cursor: pointer; /* Cursor de ponteiro ao passar o mouse */
+    transition: background-color 0.3s, color 0.3s; /* Transição suave */
+}
+
+.btn-custom:hover {
+    background-color: #1e1e1e; /* Cor de fundo ao passar o mouse */
+    color: #F2F2F2; /* Cor do texto ao passar o mouse */
 }

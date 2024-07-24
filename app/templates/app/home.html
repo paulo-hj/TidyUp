@@ -2,6 +2,7 @@
 <html lang="pt-br">
 <head>
     {% load static %}
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
     <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,7 +16,7 @@
         <nav class="navbar">
             <a href="#" class="nav-link" id="sobre-btn">Sobre</a>
             <a href="#" class="nav-link">Tutorial</a>
-            <a href="#" class="nav-link">Mais Ferramentas</a>
+            <a href="https://github.com/paulo-hj?tab=repositories" class="nav-link" target="_blank">+App</a>
         </nav>
     </header>
     <div class="container mt-5">
@@ -29,8 +30,8 @@
                 <small class="form-text text-muted">Digite entre 1 e 4 dígitos numéricos.</small>
             </div>
             <div class="text-center">
-                <button type="submit" class="btn btn-primary">Gerar Script</button>
-            </div>
+                <button type="submit" class="btn-custom">Gerar Script</button>
+            </div>            
         </form>
         {% if message %}
             <div class="alert alert-info mt-4">{{ message }}</div>
