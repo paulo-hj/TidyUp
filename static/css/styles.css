@@ -68,7 +68,7 @@ header .logo-text {
     width: 100px; /* Ajuste o tamanho conforme necessário */
 }
 footer {
-    background-color: #010409; /* Cor de fundo do rodapé */
+    background-color: #0D1117; /* Cor de fundo do rodapé */
     color: #F2F2F2; /* Cor do texto no rodapé */
     text-align: center;
     padding: 10px 0;
@@ -81,6 +81,7 @@ footer {
 }
 footer .copyright {
     margin: 0; /* Remove a margem */
+    font-size: 0.94em;
 }
 footer a {
     color: #F2F2F2; /* Cor do texto do link */
