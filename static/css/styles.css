@@ -22,6 +22,8 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Sombra para separar visualmente do restante */
+    z-index: 1000; /* Garante que o header fique acima de outros conteúdos */
 }
 
 body.light-mode header {
@@ -63,6 +65,7 @@ body.light-mode .nav-link:hover {
     flex: 1;
     max-width: 600px;
     margin: auto;
+    margin-top: 30px; /* Espaço acima do container */
 }
 
 body.light-mode .container {
