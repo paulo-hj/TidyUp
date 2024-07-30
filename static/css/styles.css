@@ -1,44 +1,39 @@
+/* CSS base (modo escuro por padrão) */
 html, body {
     height: 100%;
     margin: 0;
     padding: 0;
-}
-body {
-    background-color: #0D1117;
-    color: #F2F2F2;
+    font-family: 'Roboto', sans-serif; /* Define a fonte padrão */
+    background-color: #0D1117; /* Cor de fundo do modo escuro */
+    color: #F2F2F2; /* Cor do texto do modo escuro */
     display: flex;
     flex-direction: column;
 }
+
+body.light-mode {
+    background-color: #F8FCFF; /* Cor de fundo do modo claro */
+    color: #000000; /* Cor do texto no modo claro */
+}
+
 header {
-    background-color: #010409;
-    color: #F2F2F2;
+    background-color: #010409; /* Cor de fundo do header no modo escuro */
+    color: #F2F2F2; /* Cor do texto no header */
     padding: 10px 20px;
     display: flex;
-    justify-content: space-between; /* Distribui espaço entre logo e navegação */
+    justify-content: space-between;
     align-items: center;
 }
 
-header .logo-text {
-    font-size: 1.5em;
-    font-weight: bold;
-    font-family: 'Arial', sans-serif;
-    color: #F2F2F2;
-    text-shadow: 1px 1px 2px #000;
+body.light-mode header {
+    background-color: #ffffff; /* Cor de fundo do header no modo claro */
+    color: #000000; /* Cor do texto no header */
 }
+
 .navbar {
     display: flex;
     gap: 15px;
 }
-@media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    .navbar {
-        margin-top: 10px;
-        gap: 10px;
-    }
-}
+
 .nav-link {
     color: #F2F2F2; /* Cor do texto dos botões */
     text-decoration: none;
@@ -46,170 +41,142 @@ header .logo-text {
     border-radius: 4px;
     transition: background-color 0.3s, color 0.3s;
 }
+
+body.light-mode .nav-link {
+    color: #333333; /* Cor do texto dos botões no modo claro */
+}
+
 .nav-link:hover {
     background-color: #171B20; /* Cor de fundo ao passar o mouse */
-    color: #F2F2F2; /* Mantém a cor do texto branca ao passar o mouse */
+    color: #F2F2F2; /* Cor do texto ao passar o mouse */
 }
+
+body.light-mode .nav-link:hover {
+    background-color: #e0e0e0; /* Cor de fundo ao passar o mouse no modo claro */
+    color: #000000; /* Cor do texto ao passar o mouse no modo claro */
+}
+
 .container {
-    background-color: #0D1117;
+    background-color: #0D1117; /* Cor de fundo do container no modo escuro */
     border-radius: 8px;
     padding: 20px;
     flex: 1;
-    max-width: 600px; /* Limita a largura máxima do container */
-    margin: auto; /* Centraliza o container horizontalmente */
+    max-width: 600px;
+    margin: auto;
 }
-.alert {
-    margin-top: 20px;
+
+body.light-mode .container {
+    background-color: #ffffff; /* Cor de fundo do container no modo claro */
 }
-.logo {
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-    width: 100px; /* Ajuste o tamanho conforme necessário */
-}
+
 footer {
-    background-color: #0D1117; /* Cor de fundo do rodapé */
+    background-color: #0D1117; /* Cor de fundo do rodapé no modo escuro */
     color: #F2F2F2; /* Cor do texto no rodapé */
     text-align: center;
-    padding: 10px 0;
-    font-size: 0.9em; /* Diminuir o tamanho da fonte */
+    padding: 10px 20px;
+    font-size: 0.9em;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 450px; /* Espaçamento maior entre o texto e o link */
-    flex-wrap: wrap; /* Para garantir que o conteúdo se ajuste em telas menores */    
+    gap: 450px;
+    flex-wrap: wrap;
+    margin-top: auto; /* Garante que o rodapé fique na parte inferior */
 }
-footer .copyright {
-    margin: 0; /* Remove a margem */
-    font-size: 0.94em;
+
+body.light-mode footer {
+    background-color: #ffffff; /* Cor de fundo do rodapé no modo claro */
+    color: #000000; /* Cor do texto no rodapé */
 }
-footer a {
-    color: #F2F2F2; /* Cor do texto do link */
-    text-decoration: none;
-}
-footer a:hover {
-    text-decoration: underline;
-}
+
 .form-group input {
     background-color: #F2F2F2; /* Cor de fundo do campo de entrada */
-    border-radius: 4px; /* Borda arredondada */
-    border: 1px solid #F2F2F2; /* Cor da borda */
-    padding: 8px; /* Espaçamento interno do campo */
-    width: 150px; /* Define a largura do campo de entrada */
+    border-radius: 4px;
+    border: 1px solid #F2F2F2;
+    padding: 8px;
+    width: 150px;
 }
-.form-group input:focus {
-    border-color: #0072ff; /* Cor da borda ao focar */
-    outline: none; /* Remove o contorno padrão */
-    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25); /* Adiciona sombra ao focar */
+
+body.light-mode .form-group input {
+    background-color: #ffffff; /* Cor de fundo do campo de entrada no modo claro */
+    border: 1px solid #cccccc; /* Cor da borda do campo de entrada no modo claro */
 }
-/* Estilo do popup */
+
 .popup-overlay {
-    display: none; /* Esconde o popup por padrão */
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.6); /* Escurece um pouco mais o fundo da sobreposição */
+    background-color: rgba(0,0,0,0.6);
     justify-content: center;
     align-items: center;
 }
-.popup-content h2 {
-    font-family: 'Roboto', sans-serif; /* Aplica a nova fonte */
-    font-size: 1.8em; /* Ajusta o tamanho da fonte */
-    font-weight: bold; /* Deixa a fonte em negrito */
-    color: #F2F2F2; /* Cor do texto */
-    margin-bottom: 20px; /* Espaçamento abaixo do título */
-    text-align: center; /* Centraliza o texto */
+
+body.light-mode .popup-overlay {
+    background-color: rgba(255,255,255,0.8); /* Fundo mais claro da sobreposição no modo claro */
 }
+
 .popup-content {
     background-color: #0D1117; /* Cor de fundo do popup */
     color: #F2F2F2; /* Cor do texto no popup */
-    padding: 50px; /* Ajusta o padding para uma área de conteúdo razoável */
-    border-radius: 12px; /* Borda mais arredondada */
-    width: 70%; /* Ajusta a largura do popup */
-    max-width: 700px; /* Ajusta a largura máxima conforme necessário */
-    max-height: 70%; /* Ajusta a altura máxima para evitar overflow */
-    overflow-y: auto; /* Adiciona rolagem se o conteúdo exceder a altura */
+    padding: 50px;
+    border-radius: 12px;
+    width: 70%;
+    max-width: 700px;
+    max-height: 70%;
+    overflow-y: auto;
     position: relative;
-    box-sizing: border-box; /* Inclui padding e bordas no tamanho total do elemento */
-    text-align: left; /* Alinha o texto à esquerda */
+    box-sizing: border-box;
+    text-align: left;
 }
 
-.popup-header {
-    margin-bottom: 40px; /* Aumenta o espaçamento inferior para o título principal */
-}
-
-.popup-header h2 {
-    margin-bottom: 10px; /* Ajusta o espaçamento abaixo do título principal */
-    margin: 0;
-    font-size: 2em; /* Tamanho do título ajustado */
-    font-weight: bold;
-}
-
-.popup-header p {
-    font-size: 1.2em; /* Tamanho do texto do cabeçalho ajustado */
-    margin: 10px 0; /* Margem superior e inferior */
-    color: #F2F2F2; /* Cor do texto */
-}
-
-.popup-header a {
-    color: #1E90FF; /* Cor do link */
-    text-decoration: none;
-}
-
-.popup-header a:hover {
-    text-decoration: underline; /* Sublinhado ao passar o mouse */
-}
-
-.popup-content p {
-    margin: 5px 0; /* Espaçamento uniforme entre parágrafos */
-    line-height: 1.5; /* Melhora a legibilidade do texto */
-    font-size: 1.1em; /* Tamanho da fonte do texto ajustado */
-}
-
-.popup-content p.bold {
-    font-weight: bold; /* Títulos em negrito */
-    margin-bottom: 5px; /* Espaço abaixo dos títulos */
-    margin-top: 30px;
-}
-
-.popup-content p.bold + p {
-    margin-top: 5px; /* Reduz o espaço entre o título e o parágrafo associado */
-}
-
-.popup-content p + p {
-    margin-top: 30px; /* Espaço aumentado entre blocos de informações */
-}
-
-.popup-content img {
-    width: 155px; /* Ajusta o tamanho da logo conforme necessário */
-    display: block;
-    margin-left: 280px; /* Move o texto um pouco para a direita */
+body.light-mode .popup-content {
+    background-color: #ffffff; /* Cor de fundo do popup no modo claro */
+    color: #000000; /* Cor do texto no popup no modo claro */
 }
 
 .popup-close {
     position: absolute;
-    top: 1px; /* Ajusta a posição do botão de fechar mais próximo do topo */
+    top: 1px;
     right: 15px;
-    font-size: 2em; /* Tamanho do botão de fechar ajustado */
+    font-size: 2em;
     cursor: pointer;
-    color: #F2F2F2; /* Cor do botão de fechar */
+    color: #F2F2F2;
+}
+
+body.light-mode .popup-close {
+    color: #000000; /* Cor do botão de fechar no modo claro */
 }
 
 .btn-custom {
-    font-family: 'Roboto', sans-serif; /* Aplica a mesma fonte que os botões da navbar */
-    background-color: #171B20; /* Cor de fundo igual aos botões da navbar */
-    color: #F2F2F2; /* Cor do texto igual aos botões da navbar */
-    border: none; /* Remove a borda padrão */
-    padding: 8px 15px; /* Espaçamento interno */
-    border-radius: 4px; /* Borda arredondada */
-    font-size: 1em; /* Tamanho da fonte */
-    cursor: pointer; /* Cursor de ponteiro ao passar o mouse */
-    transition: background-color 0.3s, color 0.3s; /* Transição suave */
+    font-family: 'Roboto', sans-serif;
+    background-color: #171B20;
+    color: #F2F2F2;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.light-mode .btn-custom {
+    background-color: #e0e0e0; /* Cor de fundo dos botões no modo claro */
+    color: #000000; /* Cor do texto dos botões no modo claro */
 }
 
 .btn-custom:hover {
-    background-color: #1e1e1e; /* Cor de fundo ao passar o mouse */
-    color: #F2F2F2; /* Cor do texto ao passar o mouse */
+    background-color: #1e1e1e;
+    color: #F2F2F2;
+}
+
+body.light-mode .btn-custom:hover {
+    background-color: #cccccc; /* Cor de fundo ao passar o mouse no modo claro */
+    color: #000000; /* Cor do texto ao passar o mouse no modo claro */
+}
+
+/* Novo CSS para o ícone de alternância de tema */
+.mode-toggle {
+    cursor: pointer; /* Cursor em forma de mãozinha */
 }

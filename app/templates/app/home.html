@@ -17,6 +17,7 @@
             <a href="#" class="nav-link" id="sobre-btn">Sobre</a>
             <a href="#" class="nav-link">Tutorial</a>
             <a href="https://github.com/paulo-hj?tab=repositories" class="nav-link" target="_blank">+App</a>
+            <span class="mode-toggle" id="mode-toggle">🌙</span> <!-- Ícone de lua -->
         </nav>
     </header>
     <div class="container mt-5">
@@ -60,6 +61,7 @@
                 <img src="{% static 'images/logo.png' %}" alt="Logo" class="logo">
             </a>
         </div>
+    </div>
     <script src="{% static 'js/jquery-3.5.1.slim.min.js' %}"></script>
     <script src="{% static 'js/popper.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
@@ -76,6 +78,18 @@
         window.addEventListener('click', function(event) {
             if (event.target === document.getElementById('sobre-popup')) {
                 document.getElementById('sobre-popup').style.display = 'none';
+            }
+        });
+
+        const modeToggle = document.getElementById('mode-toggle');
+        const body = document.body;
+
+        modeToggle.addEventListener('click', () => {
+            body.classList.toggle('light-mode');
+            if (body.classList.contains('light-mode')) {
+                modeToggle.textContent = '🌙';
+            } else {
+                modeToggle.textContent = '🔆';
             }
         });
     </script>
