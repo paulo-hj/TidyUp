@@ -11,7 +11,7 @@ html, body {
 }
 
 body.light-mode {
-    background-color: #F8FCFF; /* Cor de fundo do modo claro */
+    background-color: #FFFFFF; /* Cor de fundo do modo claro */
     color: #000000; /* Cor do texto no modo claro */
 }
 
@@ -25,7 +25,7 @@ header {
 }
 
 body.light-mode header {
-    background-color: #ffffff; /* Cor de fundo do header no modo claro */
+    background-color: #F8FCFF; /* Cor de fundo do header no modo claro */
     color: #000000; /* Cor do texto no header */
 }
 
