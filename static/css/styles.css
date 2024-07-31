@@ -124,8 +124,7 @@ body.light-mode .form-group input {
     border-radius: 12px;
     width: 70%;
     max-width: 700px;
-    max-height: 70%;
-    overflow-y: auto;
+    max-height: 60%;
     position: relative;
     box-sizing: border-box;
     text-align: left;
@@ -162,12 +161,12 @@ body.light-mode .logo-text {
 .logo {
     display: block;
     margin: 20px auto;
-    width: 40%;
+    width: 30%;
     height: auto;
 }
 
 .btn-custom {
-    background-color: #010409; /* Cor de fundo do botão personalizado */
+    background-color: #171B20; /* Cor de fundo do botão personalizado */
     color: #F2F2F2; /* Cor do texto do botão personalizado */
     border: none;
     padding: 10px 20px;
