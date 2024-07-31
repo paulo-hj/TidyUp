@@ -27,7 +27,7 @@ header {
 }
 
 body.light-mode header {
-    background-color: #F8FCFF; /* Cor de fundo do header no modo claro */
+    background-color: #E0F7FA; /* Cor de fundo do header no modo claro */
     color: #000000; /* Cor do texto no header */
 }
 
@@ -131,7 +131,7 @@ body.light-mode .form-group input {
 }
 
 body.light-mode .popup-content {
-    background-color: #cccccc; /* Cor de fundo do popup no modo claro */
+    background-color: #E0F7FA; /* Cor de fundo do popup no modo claro */
     color: #000000; /* Cor do texto no popup no modo claro */
 }
 
