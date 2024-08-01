@@ -30,6 +30,11 @@
                     pattern="\d{1,4}" maxlength="4" title="Insira entre 1 e 4 dígitos numéricos" required>
                 <small class="form-text text-muted">Digite entre 1 e 4 dígitos numéricos.</small>
             </div>
+            <div class="form-group">
+                <label for="indicador_revisao">Indicador de Revisão:</label>
+                <input type="text" id="indicador_revisao" name="indicador_revisao" class="form-control" required>
+                <small class="form-text text-muted">Insira o indicador de revisão desejado.</small>
+            </div>
             <div class="text-center">
                 <button type="submit" class="btn-custom">Gerar Script</button>
             </div>            
@@ -84,6 +89,14 @@
         const modeToggle = document.getElementById('mode-toggle');
         const body = document.body;
 
+        // Define o ícone inicial baseado na classe light-mode
+        if (body.classList.contains('light-mode')) {
+            modeToggle.textContent = '🌙'; // Ícone de lua para o modo claro
+        } else {
+            modeToggle.textContent = '🔆'; // Ícone de sol para o modo escuro
+        }
+
+        // Alterna entre os modos claro e escuro
         modeToggle.addEventListener('click', () => {
             body.classList.toggle('light-mode');
             if (body.classList.contains('light-mode')) {
@@ -93,5 +106,6 @@
             }
         });
     </script>
+
 </body>
 </html>
