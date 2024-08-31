@@ -2,6 +2,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 import re
+from django.conf import settings
+import os
 
 def home(request):
     return render(request, 'app/home.html')
@@ -9,16 +11,18 @@ def home(request):
 
 def generate_script(request):
     if request.method == 'POST':
-        num_digitos = request.POST.get('num_digitos')
-        if not re.match(r'^\d{1,4}$', num_digitos):
-            return HttpResponse("Número de dígitos inválido. Insira entre 1 e 4 dígitos numéricos.", status=400)
+        # Caminho para o arquivo no diretório estático
+        file_path = os.path.join(settings.BASE_DIR, 'static', 'download', 'main-run.py')
         
-        script_content = f"""import os
-# Seu código aqui
-"""
-        response = HttpResponse(script_content, content_type='application/force-download')
-        response['Content-Disposition'] = f'attachment; filename="script_organizar.py"'
-        return response
+        # Verifique se o arquivo existe
+        if not os.path.isfile(file_path):
+            return HttpResponse("Arquivo não encontrado.", status=404)
+
+        # Leia o conteúdo do arquivo
+        with open(file_path, 'rb') as f:
+            response = HttpResponse(f.read(), content_type='application/octet-stream')
+            response['Content-Disposition'] = 'attachment; filename="main-run.py"'
+            return response
     else:
         return HttpResponse("Método não permitido", status=405)
 
