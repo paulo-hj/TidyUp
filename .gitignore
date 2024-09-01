@@ -48,5 +48,3 @@ config/
 # Arquivos do sistema operacional
 .DS_Store
 Thumbs.db
-
-setup/__pycache__/settings.cpython-312.pyc
