@@ -11,7 +11,7 @@ import webbrowser
 class Func:
     def variaveis(self):
         self.quantoDigitos = 14
-        self.indicadorRev = rev
+        self.indicadorRev = "rev"
 
     def teclaEnterOrganizar(self, event):
         self.organizar()
