@@ -1,0 +1,12 @@
+altgraph==0.17.4
+asgiref==3.8.1
+customtkinter==5.2.2
+darkdetect==0.8.0
+Django==5.0.7
+django-bootstrap-static==5.3.3
+packaging==24.1
+pillow==10.4.0
+pyinstaller==6.10.0
+pyinstaller-hooks-contrib==2024.8
+setuptools==74.0.0
+sqlparse==0.5.1
