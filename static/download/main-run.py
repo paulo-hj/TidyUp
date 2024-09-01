@@ -101,16 +101,18 @@ class Interface:
         primeiraTela.resizable(width=False, height=False)
         primeiraTela.title("Organizador de Arquivos")
         primeiraTela.configure(bg="#062F4F")
-        icon_path = "logo1.ico"
-        #primeiraTela.iconbitmap(icon_path)
+        icon_path = os.path.join(os.path.dirname(__file__), "logo.png")
+        icon_image = PhotoImage(file=icon_path)
+        primeiraTela.iconphoto(False, icon_image)
         self.primeiraTela = primeiraTela
         self.widgetsPrimeiraTela()
         primeiraTela.mainloop()
 
     def widgetsPrimeiraTela(self):
         self.primeiraTela.bind('<Return>', self.teclaEnterOrganizar)
+        logo_path = "hgbsoft.png"
 
-        logo_image = Image.open("hgbsoft.png")
+        logo_image = Image.open(logo_path)
         logo_image = logo_image.resize((150, 150), Image.LANCZOS)  # Redimensiona a imagem para 150x150
         ctk_logo_image = customtkinter.CTkImage(light_image=logo_image, dark_image=logo_image, size=(150, 150))
         logo_label = customtkinter.CTkLabel(self.primeiraTela, image=ctk_logo_image, text="")
@@ -181,8 +183,9 @@ class Interface:
         x_pos = 980 + (600 - 480) // 2
         y_pos = 450 + (400 - 360) // 2
         janela_sobre.geometry(f"{480}x360+{x_pos}+{y_pos}")
-        icon_path = "logo1.ico"
-        #janela_sobre.iconbitmap(icon_path)
+        #icon_path = os.path.join(os.path.dirname(__file__), "logo.png")
+        #icon_image = PhotoImage(file=icon_path)
+        #janela_sobre.iconbitmap(False, icon_image)
         cor_fundo = self.primeiraTela.cget("bg")
         janela_sobre.configure(bg=cor_fundo)
         janela_sobre.tk_setPalette(background=cor_fundo)
@@ -228,10 +231,11 @@ class Interface:
         versao_label = customtkinter.CTkLabel(janela_sobre, text="1.0", font=("Helvetica", 12))
         versao_label.place(relx=0.578, rely=0.74, anchor=NW)
 
+        janela_sobre.update()  # Garantir que a janela esteja visível
         janela_sobre.transient(self.primeiraTela)
         janela_sobre.grab_set()
 
-        janela_sobre.mainloop()
+        #janela_sobre.mainloop()
 
 class Main(Func, Interface):
     def __init__(self):

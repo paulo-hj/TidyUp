@@ -3,12 +3,13 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.conf import settings
 import os
-import re  # Adicione esta linha para importar o módulo 're'
+import re
+import subprocess
 
 def home(request):
     return render(request, 'app/home.html')
 
-def generate_script(request):
+def gerarScript(request):
     if request.method == 'POST':
         # Recebe o valor do campo Quantidade de dígitos
         num_digitos = request.POST.get('num_digitos')
@@ -28,10 +29,34 @@ def generate_script(request):
         # Substitua a variável no script com os valores fornecidos
         script_content = re.sub(r'self\.quantoDigitos\s*=\s*\d+', f'self.quantoDigitos = {num_digitos}', script_content)
         script_content = re.sub(r'self\.indicadorRev\s*=\s*["\'].*?["\']', f'self.indicadorRev = "{indicador_revisao}"', script_content)
+
+        # Caminho para o script de geração do executável
+        gerar_executavel_script = os.path.join(settings.BASE_DIR, 'scripts', 'gerar_executavel.py')
         
-        # Crie uma resposta HTTP com o conteúdo modificado
-        response = HttpResponse(script_content, content_type='application/octet-stream')
-        response['Content-Disposition'] = 'attachment; filename="main-run.py"'
+        # Executa o script para gerar o executável
+        try:
+            subprocess.run(['python', gerar_executavel_script], check=True)
+        except subprocess.CalledProcessError as e:
+            return HttpResponse(f"Erro ao gerar o executável: {str(e)}", status=500)
+        
+        # Caminho para o executável gerado
+        executable_path = os.path.join(settings.BASE_DIR, 'static', 'download', 'executavel', 'main-run')
+
+        # Verifica se o executável foi criado
+        if not os.path.isfile(executable_path):
+            return HttpResponse("Executável não encontrado.", status=404)
+        
+        # Teste
+        #txt_file_path = os.path.join(settings.BASE_DIR, 'static', 'download', 'executavel', 'variaveis.txt')
+        #with open(txt_file_path, 'w') as txt_file:
+        #    txt_file.write(f"Quantidade de dígitos: {num_digitos}\n")
+        #    txt_file.write(f"Indicador de Revisão: {indicador_revisao}\n")
+        #    txt_file.write(f"Conteúdo do script:\n{script_content}\n")
+        
+        # Crie uma resposta HTTP com o executável
+        with open(executable_path, 'rb') as f:
+            response = HttpResponse(f.read(), content_type='application/octet-stream')
+            response['Content-Disposition'] = 'attachment; filename="main-run.exe"'
         
         return response
     else:
