@@ -20,9 +20,10 @@
             <span class="mode-toggle" id="mode-toggle">🌙</span> <!-- Ícone de lua -->
         </nav>
     </header>
+
     <div class="container mt-5">
         <h1 class="text-center">Gerar Script de Organização de Arquivos</h1>
-        <form method="post" action="{% url 'gerarScript' %}" class="mt-4">
+        <form method="post" action="{% url 'gerarScript' %}" class="mt-4" id="generate-form">
             {% csrf_token %}
             <div class="form-group">
                 <label for="num_digitos">Quantidade de dígitos:</label>
@@ -43,11 +44,19 @@
             <div class="alert alert-info mt-4">{{ message }}</div>
         {% endif %}
     </div>
+
+    <!-- Barra de Carregamento -->
+    <div id="loading-overlay">
+        <div id="loading-spinner"></div>
+        <p>Gerando script, por favor aguarde...</p>
+    </div>
+
     <footer>
         <div class="copyright">
             © 2024 HGB Soft
         </div>
     </footer>
+
     <!-- Popup -->
     <div id="sobre-popup" class="popup-overlay">
         <div class="popup-content">
@@ -67,10 +76,14 @@
             </a>
         </div>
     </div>
+
+    <!-- Scripts -->
     <script src="{% static 'js/jquery-3.5.1.slim.min.js' %}"></script>
     <script src="{% static 'js/popper.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
     <script>
+        // Script para o Popup "Sobre"
         document.getElementById('sobre-btn').addEventListener('click', function(event) {
             event.preventDefault(); // Impede o comportamento padrão do link
             document.getElementById('sobre-popup').style.display = 'flex';
@@ -86,6 +99,7 @@
             }
         });
 
+        // Script para alternar entre modos claro e escuro
         const modeToggle = document.getElementById('mode-toggle');
         const body = document.body;
 
@@ -104,6 +118,50 @@
             } else {
                 modeToggle.textContent = '🔆';
             }
+        });
+    </script>
+
+    <script>
+        // Script para a Barra de Carregamento durante a submissão do formulário
+        document.getElementById('generate-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Impede a submissão padrão do formulário
+
+            // Exibe a barra de carregamento
+            document.getElementById('loading-overlay').style.display = 'flex';
+
+            // Cria um objeto FormData a partir do formulário
+            let formData = new FormData(event.target);
+
+            // Envia a requisição via Fetch API
+            fetch("{% url 'gerarScript' %}", {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Erro na resposta da rede.');
+                }
+                return response.blob();  // Ou .json() se esperar uma resposta JSON
+            })
+            .then(blob => {
+                // Oculta a barra de carregamento
+                document.getElementById('loading-overlay').style.display = 'none';
+
+                // Cria um link para download do arquivo
+                let url = window.URL.createObjectURL(blob);
+                let a = document.createElement('a');
+                a.href = url;
+                a.download = "main-run.exe";  // Nome do arquivo para download
+                document.body.appendChild(a); 
+                a.click();
+                a.remove();
+            })
+            .catch(error => {
+                // Oculta a barra de carregamento
+                document.getElementById('loading-overlay').style.display = 'none';
+                console.error("Erro ao gerar o executável:", error);
+                alert("Ocorreu um erro ao gerar o executável. Por favor, tente novamente.");
+            });
         });
     </script>
 
