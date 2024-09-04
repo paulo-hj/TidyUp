@@ -53,7 +53,7 @@ class Func:
                     
                     match = re.search(fr'{self.indicadorRev}\s*([a-zA-Z\d]+)', arquivo[self.quantoDigitos:], re.IGNORECASE)
                     if match:
-                        subdir_name = f"Rev.{match.group(1)}"
+                        subdir_name = f"{self.indicadorRev}.{match.group(1)}"
                         subdir_path = os.path.join(pastas_criadas[nome_base], subdir_name)
                         if not os.path.exists(subdir_path):
                             os.makedirs(subdir_path)
@@ -63,7 +63,7 @@ class Func:
                     else:
                         match_rev = re.search(fr'{self.indicadorRev}\s*(\d+)', arquivo[self.quantoDigitos:], re.IGNORECASE)
                         if match_rev:
-                            subdir_name = f"Rev.{match_rev.group(1)}"
+                            ssubdir_name = f"{self.indicadorRev}.{match.group(1)}"
                             subdir_path = os.path.join(pastas_criadas[nome_base], subdir_name)
                             if not os.path.exists(subdir_path):
                                 os.makedirs(subdir_path)
@@ -109,8 +109,9 @@ class Interface:
         primeiraTela.mainloop()
 
     def widgetsPrimeiraTela(self):
+        self.script_dir = os.path.dirname(os.path.abspath(__file__))
         self.primeiraTela.bind('<Return>', self.teclaEnterOrganizar)
-        logo_path = "hgbsoft.png"
+        logo_path = os.path.join(self.script_dir, 'hgbsoft.png')
 
         logo_image = Image.open(logo_path)
         logo_image = logo_image.resize((150, 150), Image.LANCZOS)  # Redimensiona a imagem para 150x150
@@ -239,6 +240,7 @@ class Interface:
 
 class Main(Func, Interface):
     def __init__(self):
+        self.variaveis()
         self.tela()
 
 Main()
