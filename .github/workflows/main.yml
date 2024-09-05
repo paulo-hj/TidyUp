@@ -1,0 +1,33 @@
+name: Build Windows Executable
+
+on:
+  workflow_dispatch:
+    # Este workflow pode ser acionado manualmente
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pyinstaller customtkinter pillow
+
+    - name: Build executable
+      run: |
+        pyinstaller --onefile --windowed static/download/main-run.py
+
+    - name: Upload executable as artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: windows-executable
+        path: dist/main-run.exe
