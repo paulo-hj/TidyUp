@@ -8,6 +8,7 @@ import customtkinter
 from PIL import Image, ImageTk
 import webbrowser
 
+
 class Func:
     def variaveis(self):
         self.quantoDigitos = 14
@@ -101,9 +102,9 @@ class Interface:
         primeiraTela.resizable(width=False, height=False)
         primeiraTela.title("Organizador de Arquivos")
         primeiraTela.configure(bg="#062F4F")
-        #icon_path = os.path.join(os.path.dirname(__file__), "logo.png")
-        #icon_image = PhotoImage(file=icon_path)
-        #primeiraTela.iconphoto(False, icon_image)
+        icon_path = os.path.join(os.path.dirname(__file__), "logo.png")
+        icon_image = PhotoImage(file=icon_path)
+        primeiraTela.iconphoto(False, icon_image)
         self.primeiraTela = primeiraTela
         self.widgetsPrimeiraTela()
         primeiraTela.mainloop()
