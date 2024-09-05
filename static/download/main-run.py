@@ -8,7 +8,6 @@ import customtkinter
 from PIL import Image, ImageTk
 import webbrowser
 
-
 class Func:
     def variaveis(self):
         self.quantoDigitos = 14
