@@ -48,6 +48,3 @@ config/
 # Arquivos do sistema operacional
 .DS_Store
 Thumbs.db
-
-#
-static/download/executavel/
